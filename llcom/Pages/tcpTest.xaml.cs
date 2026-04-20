@@ -35,7 +35,7 @@ namespace llcom.Pages
             InitializeComponent();
         }
 
-        public WebSocket ws = new WebSocket("wss://netlab.luatos.com/ws/netlab");
+        public WebSocket ws = new WebSocket("wss://gps.openluat.com/netlab/ws/netlab");
         public WebSocket wsV6 = new WebSocket("wss://netlab.luatos.org/ws/netlab");
         ObservableCollection<string> clients = new ObservableCollection<string>();
 
@@ -93,7 +93,7 @@ namespace llcom.Pages
                     switch ((string)o["action"])
                     {
                         case "port":
-                            Address = $"{ConnectionType}://112.125.89.8:{o["port"]}";
+                            Address = $"{ConnectionType}://115.120.239.161:{o["port"]}";
                             AddressV6 = "not suppoer ipv6";
                             ShowData($"📢 Created a {ConnectionType} server.");
                             break;
