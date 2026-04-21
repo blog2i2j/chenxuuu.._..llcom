@@ -123,7 +123,6 @@ namespace llcom.Tools
         /// 是否有新版本？
         /// </summary>
         public static bool HasNewVersion { get; set; } = false;
-        public static byte[][] recvPara { get; set; } = null; // recvPara = [ uartPara, uartSendRaw ]
 
 
         /// <summary>

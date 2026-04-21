@@ -803,7 +803,6 @@ namespace llcom
         {
             Global.setting.recvScript = recvScriptBackup;
             var data = Global.GetEncoding().GetBytes(toSendDataTextBox.Text);
-            Global.recvPara = [[], data];
             sendUartData(data);
         }
 
@@ -849,7 +848,6 @@ namespace llcom
             }
 
             var sendData = data.hex ? Global.Hex2Byte(data.text) : Global.GetEncoding().GetBytes(data.text);
-            Global.recvPara = [Global.GetEncoding().GetBytes(data.recvScriptPara), sendData];
             sendUartData(sendData, true);
         }
 

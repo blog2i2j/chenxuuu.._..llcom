@@ -351,7 +351,6 @@
                                                 <ColumnDefinition Width="auto" />
                                                 <ColumnDefinition Width="20" />
                                                 <ColumnDefinition Width="25" />
-                                                <ColumnDefinition Width="25" />
                                             </Grid.ColumnDefinitions>
                                             <Grid
                                                 Margin="1"
@@ -416,6 +415,7 @@
                                                 </TextBlock.ToolTip>
                                             </TextBlock>
                                             <TextBlock
+                                                Visibility="Collapsed"
                                                 Name="recvScriptPara"
                                                 Grid.Column="5"
                                                 HorizontalAlignment="Center"
@@ -457,7 +457,6 @@
                             <ColumnDefinition Width="30" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="40" />
-                            <ColumnDefinition Width="22" />
                             <ColumnDefinition Width="25" />
                             <ColumnDefinition Width="25" />
                         </Grid.ColumnDefinitions>
@@ -490,10 +489,6 @@
                             Grid.Column="4"
                             HorizontalAlignment="Center"
                             Text="{DynamicResource QuickSendRecvScript}" />
-                        <TextBlock
-                            Grid.Column="5"
-                            HorizontalAlignment="Center"
-                            Text="{DynamicResource QuickSendRecvScriptPara}" />
                     </Grid>
                     <ListBox
                         Name="toSendList"

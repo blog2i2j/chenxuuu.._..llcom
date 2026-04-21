@@ -437,8 +437,6 @@ namespace llcom
                             "uartData", (bool)(luaTestHexCheckRev.IsChecked) ? 
                             Tools.Global.Hex2Byte(luaTestTextBoxRev.Text) : 
                             Tools.Global.GetEncoding().GetBytes(luaTestTextBoxRev.Text),
-                            "uartPara",
-                            Tools.Global.GetEncoding().GetBytes(luaTestParaTextBoxRev.Text)
                         },
                         "user_script_recv_convert/");
                     Tools.MessageBox.Show($"{TryFindResource("SettingLuaRunResult") as string ?? "?!"}\r\nHEX：" + Tools.Global.Byte2Hex(r) +

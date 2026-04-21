@@ -372,14 +372,6 @@
                                 <fa:FontAwesome Foreground="Red" Icon="Ban" />
                             </Button>
                         </WrapPanel>
-                        <WrapPanel 
-                            Grid.Row="1" 
-                            Margin="3"
-                            Orientation="Horizontal" 
-                            Visibility="{Binding ElementName=luaTestWrapPanelRev, Path=Visibility}">
-                            <TextBlock VerticalAlignment="Center" Text="{DynamicResource SettingLuaTestPara}"/>
-                            <TextBox Name="luaTestParaTextBoxRev" Margin="3,0,0,0" Width="300"/>
-                        </WrapPanel>
                     </Grid>
                     <avalonEdit:TextEditor
                         xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"

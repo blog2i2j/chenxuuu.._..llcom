@@ -198,7 +198,7 @@ namespace llcom.Pages
                     {
                         temp = LuaEnv.LuaLoader.Run(
                             $"{Tools.Global.setting.recvScript}.lua",
-                            new System.Collections.ArrayList { "uartData", temp , "uartPara", Global.recvPara[0], "uartSendRaw", Global.recvPara[1] },
+                            new System.Collections.ArrayList { "uartData", temp },
                             "user_script_recv_convert/");
                     }
                     catch (Exception ex)
