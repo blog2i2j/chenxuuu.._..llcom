@@ -343,6 +343,7 @@ namespace llcom.Tools
             uart.serial.StopBits = (StopBits)setting.stopBit;
             uart.UartDataRecived += Uart_UartDataRecived;
             uart.UartDataSent += Uart_UartDataSent;
+            uart.UartDataRawSent += Uart_UartDataRawSent;
         }
 
         /// <summary>
@@ -354,6 +355,11 @@ namespace llcom.Tools
         {
             Logger.AddUartLogInfo($"<-{Byte2Readable((byte[])sender)}");
             Logger.AddUartLogDebug($"[HEX]{Byte2Hex((byte[])sender, " ")}");
+        }
+        private static void Uart_UartDataRawSent(object sender, EventArgs e)
+        {
+            Logger.AddUartLogInfo($"Raw<-{Byte2Readable((byte[])sender)}");
+            Logger.AddUartLogDebug($"[Raw HEX]{Byte2Hex((byte[])sender, " ")}");
         }
 
         /// <summary>

@@ -32,6 +32,19 @@ namespace llcom.Tools
                 send = send
             });
         }
+
+        public static void ShowRawData(string title, byte[] data, bool send)
+        {
+            //不刷新日志
+            if (Tools.Global.setting.DisableLog)
+                return;
+            DataShowTask?.Invoke(null, new DataShowRaw
+            {
+                title = title,
+                data = data,
+                color = send ? Brushes.DarkRed : Brushes.DarkGreen
+            });
+        }
         //显示日志数据
         public static void ShowDataRaw(DataShowRaw s)
         {

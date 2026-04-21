@@ -20,6 +20,7 @@ namespace llcom.Model
         public SerialPort serial = new SerialPort();
         public event EventHandler UartDataRecived;
         public event EventHandler UartDataSent;
+        public event EventHandler UartDataRawSent;
         private Stream lastPortBaseStream = null;
         private bool _rts = false;
         private bool _dtr = true;
@@ -201,8 +202,26 @@ namespace llcom.Model
                 return;
             serial.Write(data, 0, data.Length);
             Tools.Global.setting.SentCount += data.Length;
-            if(dataRaw != null && Tools.Global.setting.showSendRaw) UartDataSent(dataRaw, EventArgs.Empty);
-            if(Tools.Global.setting.showSend) UartDataSent(data, EventArgs.Empty);//回调
+
+            //判断data与dataRaw是否相同，如果相同就只显示一个
+            if (dataRaw != null) {
+                if (dataRaw.Length == data.Length)
+                {
+                    bool same = true;
+                    for (int i = 0; i < data.Length; i++)
+                    {
+                        if (data[i] != dataRaw[i])
+                        {
+                            same = false;
+                            break;
+                        }
+                    }
+                    if (same)
+                        dataRaw = null;
+                }
+            }
+            if (dataRaw != null && Tools.Global.setting.showSendRaw) UartDataRawSent?.Invoke(dataRaw, EventArgs.Empty);
+            if(Tools.Global.setting.showSend) UartDataSent?.Invoke(data, EventArgs.Empty);//回调
         }
 
         //收到串口事件的信号量

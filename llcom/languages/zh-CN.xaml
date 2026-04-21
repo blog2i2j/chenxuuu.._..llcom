@@ -1,8 +1,8 @@
 <ResourceDictionary
-    xml:space="preserve"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xml:space="preserve">
     <system:String x:Key="AppTitle">LLCOM - 能跑Lua脚本的串口调试工具</system:String>
     <system:String x:Key="OpenPort_open">打开</system:String>
     <system:String x:Key="OpenPort_close">关闭</system:String>
@@ -102,8 +102,9 @@
     <system:String x:Key="SettingShowBoth">同时显示Hex和文本数据</system:String>
     <system:String x:Key="SettingShoText">只显示文本数据</system:String>
     <system:String x:Key="SettingShowHexOnly">只显示Hex数据</system:String>
-    <system:String x:Key="SettingShowSend">显示串口发送出去的数据</system:String>
-    <system:String x:Key="SettingShowSendRaw">显示原始发送数据</system:String>
+    <system:String x:Key="SettingShowSend">显示串口实际发出去的数据</system:String>
+    <system:String x:Key="SettingShowSendRaw">显示原始发送数据（用户请求发送时的原始数据）</system:String>
+    <system:String x:Key="RawDataSentTitle">原始数据</system:String>
     <system:String x:Key="SettingKeepTop">窗口保持置顶显示</system:String>
     <system:String x:Key="SettingUartTimeout">分包数据超时时间：</system:String>
     <system:String x:Key="SettingMs">毫秒（负数为不分包模式）</system:String>

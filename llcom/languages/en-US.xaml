@@ -1,8 +1,8 @@
 <ResourceDictionary
-    xml:space="preserve"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xml:space="preserve">
     <system:String x:Key="AppTitle">LLCOM - Debug serial port with Lua!</system:String>
     <system:String x:Key="OpenPort_open">Open</system:String>
     <system:String x:Key="OpenPort_close">Close</system:String>
@@ -102,8 +102,9 @@
     <system:String x:Key="SettingShowBoth">Both Text and Hex</system:String>
     <system:String x:Key="SettingShoText">Only Text</system:String>
     <system:String x:Key="SettingShowHexOnly">Only Hex</system:String>
-    <system:String x:Key="SettingShowSend">Show data you sent</system:String>
-    <system:String x:Key="SettingShowSendRaw">Show raw data you sent</system:String>
+    <system:String x:Key="SettingShowSend">Show data you really sent</system:String>
+    <system:String x:Key="SettingShowSendRaw">Show raw data that you used for sending</system:String>
+    <system:String x:Key="RawDataSentTitle">Raw data</system:String>
     <system:String x:Key="SettingKeepTop">Keep Window on top</system:String>
     <system:String x:Key="SettingUartTimeout">Data pack time:</system:String>
     <system:String x:Key="SettingMs">Ms(minus means Not Pack Mode)</system:String>
