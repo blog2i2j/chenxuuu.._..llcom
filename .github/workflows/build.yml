@@ -26,10 +26,10 @@ jobs:
         uses: NuGet/setup-nuget@v2
 
       - name: Restore NuGet packages
-        run: nuget restore llcom/llcom.csproj
+        run: nuget restore llcom.sln
 
       - name: Build
-        run: msbuild llcom/llcom.csproj /p:Configuration=Release /p:Platform=x64 /v:normal
+        run: msbuild llcom.sln /p:Configuration=Release /p:Platform=x64 /v:normal
 
       - name: Clean build output
         shell: cmd
@@ -59,7 +59,7 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force -Path temp
           Compress-Archive -Path llcom\bin\x64\Release\* -Force -DestinationPath temp\llcom.zip
-          Copy-Item llcom\changlog\index.html    temp\changelog.html
+          Copy-Item llcom\changlog\index.html     temp\changelog.html
           Copy-Item llcom\changlog\autoUpdate.xml temp\autoUpdate.xml
 
       - name: Create GitHub Release
