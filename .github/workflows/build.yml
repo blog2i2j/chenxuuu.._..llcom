@@ -1,0 +1,85 @@
+name: Build and Release
+
+on:
+  push:
+    branches-ignore:
+      - next
+    tags:
+      - '*'
+  pull_request:
+    branches-ignore:
+      - next
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: Restore NuGet packages
+        run: nuget restore llcom/llcom.csproj
+
+      - name: Build
+        run: msbuild llcom/llcom.csproj /p:Configuration=Release /p:Platform=x64 /v:normal
+
+      - name: Clean build output
+        shell: cmd
+        run: |
+          cd llcom\bin\x64\Release
+          del /q *.xml 2>nul
+          del /q *.pdb 2>nul
+          del /q *.config 2>nul
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: llcom_x64
+          path: llcom/bin/x64/Release/
+
+      # -------- 以下步骤仅在打 tag 时执行 --------
+
+      - name: Copy core_script into Release folder
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: cmd
+        run: |
+          xcopy /e /r /y "llcom\DefaultFiles\core_script" "llcom\bin\x64\Release\core_script\"
+
+      - name: Package zip for release
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path temp
+          Compress-Archive -Path llcom\bin\x64\Release\* -Force -DestinationPath temp\llcom.zip
+          Copy-Item llcom\changlog\index.html    temp\changelog.html
+          Copy-Item llcom\changlog\autoUpdate.xml temp\autoUpdate.xml
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: false
+          files: temp/llcom.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload to COS
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: cmd
+        env:
+          COS_A: ${{ secrets.COS_A }}
+          COS_S: ${{ secrets.COS_S }}
+          COS_B: ${{ secrets.COS_B }}
+          COS_R: ${{ secrets.COS_R }}
+        run: |
+          python -m pip install coscmd==1.8.6.31
+          coscmd config -a %COS_A% -s %COS_S% -b %COS_B% -r %COS_R%
+          coscmd upload temp/ / -r
