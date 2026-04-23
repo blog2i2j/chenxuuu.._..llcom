@@ -5,11 +5,18 @@
 
 [English readme click here](/README_EN.md)
 
-![icon](/llcom/llcom.ico)
+<p align="center">
+    <br>
+    <img src="./llcom/llcom.ico" width="150"/>
+    <br>
+</p>
 
-[![Build status](https://ci.appveyor.com/api/projects/status/telji5j8r0v5001c?svg=true)](https://ci.appveyor.com/project/chenxuuu/llcom)
-[![MIT](https://img.shields.io/static/v1.svg?label=license&message=Apache+2&color=blue)](https://github.com/chenxuuu/llcom/blob/master/LICENSE)
-[![code-size](https://img.shields.io/github/languages/code-size/chenxuuu/llcom.svg)](https://github.com/chenxuuu/llcom/archive/master.zip)
+<p align="center">
+    <img alt="GitHub" src="https://img.shields.io/github/license/chenxuuu/llcom">
+    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/chenxuuu/llcom">
+    <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/chenxuuu/llcom">
+    <img alt="code-size" src="https://img.shields.io/github/languages/code-size/chenxuuu/llcom.svg">
+</p>
 
 可运行lua脚本的高自由度串口调试工具。使用交流群：`931546484`
 

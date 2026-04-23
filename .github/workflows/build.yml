@@ -29,7 +29,7 @@ jobs:
         run: nuget restore llcom.sln
 
       - name: Build
-        run: msbuild llcom.sln /p:Configuration=Release /p:Platform=x64 /v:normal
+        run: msbuild llcom/llcom.csproj /p:Configuration=Release /p:Platform=x64 /v:normal
 
       - name: Clean build output
         shell: cmd
